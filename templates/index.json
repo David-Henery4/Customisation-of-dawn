@@ -36,7 +36,7 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/space-banner-six.jpg",
-        "image_overlay_opacity": 50,
+        "image_overlay_opacity": 60,
         "image_height": "large",
         "desktop_content_position": "middle-center",
         "show_text_box": false,
@@ -54,171 +54,152 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "heading": "Welcome to Galaxia Threads",
+            "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "text": "<p>At Galaxia Threads, we believe that fashion should be an expression of individuality and curiosity. Our carefully curated selection of space-themed apparel and accessories transcends traditional novelty designs, offering pieces that effortlessly blend creativity, elegance, and a touch of cosmic allure. Whether you're stargazing under a clear night sky or attending a sophisticated event, our collection allows you to showcase your passion for space in a stylish and versatile way. Join us as we bridge the gap between the worlds of fashion and science, and discover a universe of possibilities.<\/p>"
+          }
+        },
+        "dd4b22ba-29bc-48e1-928e-512204bc5f35": {
+          "type": "caption",
+          "settings": {
+            "caption": "Begin your cosmic style journey today and let your imagination take flight!",
+            "text_style": "subtitle",
+            "text_size": "medium"
           }
         }
       },
       "block_order": [
         "heading",
-        "text"
+        "text",
+        "dd4b22ba-29bc-48e1-928e-512204bc5f35"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "background-1",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "collage": {
+      "type": "collage",
+      "blocks": {
+        "26639f16-c1f0-49b6-bd67-7fb5fed6cbbc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/group-4.jpg"
+          }
+        },
+        "collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "clothes"
+          }
+        },
+        "product": {
+          "type": "product",
+          "settings": {
+            "product": "cat-themed-t-shirt",
+            "second_image": false
+          }
+        }
+      },
+      "block_order": [
+        "26639f16-c1f0-49b6-bd67-7fb5fed6cbbc",
+        "collection-1",
+        "product"
+      ],
+      "settings": {
+        "heading": "Multimedia collage",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "collage",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "inverse",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
         "title": "Featured products",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "description": "",
         "show_description": false,
-        "description_style": "body",
-        "collection": "all",
+        "description_style": "subtitle",
+        "collection": "clothes",
         "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
+        "enable_desktop_slider": true,
         "color_scheme": "background-1",
-        "image_ratio": "adapt",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "enable_quick_add": true,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 28,
-        "padding_bottom": 36
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
-    "collage": {
-      "type": "collage",
+    "ea13baa9-6559-45c2-98e5-9050e9442c9f": {
+      "type": "image-banner",
       "blocks": {
-        "collection-0": {
-          "type": "collection",
+        "template--19123801882925__ea13baa9-6559-45c2-98e5-9050e9442c9f-168518591998685b4d-0": {
+          "type": "heading",
           "settings": {
-            "collection": ""
+            "heading": "<strong>Unleash Your Cosmic Story<\/strong>",
+            "heading_size": "h0"
           }
         },
-        "product": {
-          "type": "product",
+        "template--19123801882925__ea13baa9-6559-45c2-98e5-9050e9442c9f-168518591998685b4d-2": {
+          "type": "buttons",
           "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
+            "button_label_1": "Shop All",
+            "button_link_1": "shopify:\/\/collections\/clothes",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
+        "template--19123801882925__ea13baa9-6559-45c2-98e5-9050e9442c9f-168518591998685b4d-0",
+        "template--19123801882925__ea13baa9-6559-45c2-98e5-9050e9442c9f-168518591998685b4d-2"
       ],
       "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "card_styles": "product-card-wrapper",
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "image": "shopify:\/\/shop_images\/space-banner-four.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
       }
     }
   },
   "order": [
     "image_banner",
     "rich_text",
-    "featured_collection",
     "collage",
-    "video",
-    "multicolumn"
+    "featured_collection",
+    "ea13baa9-6559-45c2-98e5-9050e9442c9f"
   ]
 }

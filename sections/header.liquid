@@ -117,6 +117,20 @@
   }
 {%- endstyle -%}
 
+<style>
+  /* <script>console.log("{{ request.path }}")</script> */
+  /* Applies absolute to navbar only on home page */
+  {% if request.path == "/" %}
+    .header-wrapper{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    }
+  {% endif %}
+</style>
+
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -215,6 +229,8 @@
         endif
       endif
     %}
+
+    
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
@@ -362,6 +378,7 @@
 
     connectedCallback() {
       this.header = document.querySelector('.section-header');
+      this.navContent = document.querySelector(".header-wrapper");
       this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
 
@@ -387,7 +404,7 @@
     }
 
     setHeaderHeight() {
-      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      document.documentElement.style.setProperty('--header-height', `${this.navContent.offsetHeight}px`);
     }
 
     disconnectedCallback() {
@@ -445,11 +462,13 @@
       if (this.headerIsAlwaysSticky) return;
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
+      this.navContent.classList.add("header-wrapper--active");
     }
 
     reset() {
       if (this.headerIsAlwaysSticky) return;
       this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
+      this.navContent.classList.remove("header-wrapper--active");
     }
 
     closeMenuDisclosure() {
