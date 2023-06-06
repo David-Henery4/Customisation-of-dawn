@@ -47,16 +47,20 @@
   endif
 -%}
 
+<script>
+  // console.log("{{section.id}}".includes("image_banner"))
+</script>
+
 
 
 {% javascript %}
 // ADDS CORRECT PADDING TO ALL BUT THE FIRST IMAGE BANNER USED
-  const secondBannerContent = document.querySelectorAll(".banner__box")
-  secondBannerContent.forEach((ele, i) => {
-    if (i >= 1){
-      ele.style.padding = "4rem 3.5rem 4rem"
-    }
-  })
+  // const secondBannerContent = document.querySelectorAll(".banner__box")
+  // secondBannerContent.forEach((ele, i) => {
+  //   if (i >= 1){
+  //     ele.style.padding = "4rem 3.5rem 4rem"
+  //   }
+  // })
 {% endjavascript %}
 
 <div

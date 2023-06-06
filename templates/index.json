@@ -180,6 +180,9 @@
         "template--19123801882925__ea13baa9-6559-45c2-98e5-9050e9442c9f-168518591998685b4d-0",
         "template--19123801882925__ea13baa9-6559-45c2-98e5-9050e9442c9f-168518591998685b4d-2"
       ],
+      "custom_css": [
+
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/space-banner-four.jpg",
         "image_overlay_opacity": 50,
@@ -190,8 +193,8 @@
         "color_scheme": "",
         "image_behavior": "ambient",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     }
   },
