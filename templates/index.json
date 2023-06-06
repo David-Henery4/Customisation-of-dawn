@@ -156,6 +156,7 @@
     },
     "ea13baa9-6559-45c2-98e5-9050e9442c9f": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "template--19123801882925__ea13baa9-6559-45c2-98e5-9050e9442c9f-168518591998685b4d-0": {
           "type": "heading",
@@ -196,6 +197,46 @@
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
+    },
+    "37fed804-ca27-4eb6-9abd-f2e9c76d6f16": {
+      "type": "cta-image-banner",
+      "blocks": {
+        "template--19123801882925__37fed804-ca27-4eb6-9abd-f2e9c76d6f16-1686077599dcc492d3-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Unleash Your Cosmic Story<\/strong>",
+            "heading_size": "h0"
+          }
+        },
+        "template--19123801882925__37fed804-ca27-4eb6-9abd-f2e9c76d6f16-1686077599dcc492d3-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop All",
+            "button_link_1": "shopify:\/\/collections\/clothes",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--19123801882925__37fed804-ca27-4eb6-9abd-f2e9c76d6f16-1686077599dcc492d3-0",
+        "template--19123801882925__37fed804-ca27-4eb6-9abd-f2e9c76d6f16-1686077599dcc492d3-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/space-banner-four.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
     }
   },
   "order": [
@@ -203,6 +244,7 @@
     "rich_text",
     "collage",
     "featured_collection",
-    "ea13baa9-6559-45c2-98e5-9050e9442c9f"
+    "ea13baa9-6559-45c2-98e5-9050e9442c9f",
+    "37fed804-ca27-4eb6-9abd-f2e9c76d6f16"
   ]
 }
