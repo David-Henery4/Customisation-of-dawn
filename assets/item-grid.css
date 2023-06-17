@@ -1,0 +1,30 @@
+.item-grid-container {
+  display: grid;
+  justify-content: space-evenly;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+.item-grid__col--1{
+  grid-template-columns: repeat(1, 1fr);
+}
+.item-grid__col--2{
+  grid-template-columns: repeat(2, 1fr);
+}
+.item-grid__col--3{
+  grid-template-columns: repeat(3, 1fr);
+}
+.item-grid__col--4{
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* 475px */
+@media (min-width: 29.68em) { 
+  
+}
+
+.item-grid-item {
+}
