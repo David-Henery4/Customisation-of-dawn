@@ -712,9 +712,6 @@
         "products_to_show": {
           "label": "Maximum products to show"
         },
-        "columns_desktop": {
-          "label": "Number of columns on desktop"
-        },
         "show_view_all": {
           "label": "Enable \"View all\" if collection has more products than shown"
         },
@@ -766,7 +763,7 @@
           "info": "Optimal with popup or drawer cart type."
         },
         "header_mobile": {
-          "content": "Mobile Layout"
+          "content": "Grid Column Layout"
         },
         "columns_mobile": {
           "label": "Number of columns on mobile",
@@ -775,6 +772,39 @@
           },
           "options__2": {
             "label": "2 columns"
+          }
+        },
+        "columns_tablet": {
+          "label": "Number of columns on tablet",
+          "options__1": {
+            "label": "2 column"
+          },
+          "options__2": {
+            "label": "3 columns"
+          }
+        },
+        "columns_laptop": {
+          "label": "Number of columns on laptop",
+          "options__1": {
+            "label": "2 columns"
+          },
+          "options__2": {
+            "label": "3 columns"
+          },
+          "options__3": {
+            "label": "4 columns"
+          }
+        },
+        "columns_desktop": {
+          "label": "Number of columns on desktop",
+          "options__1": {
+            "label": "2 columns"
+          },
+          "options__2": {
+            "label": "3 columns"
+          },
+          "options__3": {
+            "label": "4 columns"
           }
         },
         "swipe_on_mobile": {
