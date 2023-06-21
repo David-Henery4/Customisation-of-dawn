@@ -63,7 +63,7 @@
             endif
           -%}
           <div
-            class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="footer__blocks-wrapper grid grid--1-col grid--2-col {% if section.settings.center-mobile-items %} footer-items__mob-titles--center {% endif %} grid--4-col-tablet {{ footer_grid_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
             {% endif %}
@@ -95,7 +95,7 @@
                           <li>
                             <a
                               href="{{ link.url }}"
-                              class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+                              class="link link--text list-menu__item list-menu__item--link {% if section.settings.center-mobile-items %} footer-items__mob-links--center {% endif %} {% if link.active %} list-menu__item--active{% endif %}"
                             >
                               {{ link.title }}
                             </a>
@@ -612,6 +612,16 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Links alignment on Mobile"
+    },
+    {
+      "type":"checkbox",
+      "id": "center-mobile-items",
+      "label": "Center links on mobile",
+      "default": true
     }
   ],
   "default": {

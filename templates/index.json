@@ -136,7 +136,6 @@
         "description_style": "subtitle",
         "collection": "clothes",
         "products_to_show": 8,
-        "columns_desktop": 4,
         "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
@@ -149,6 +148,7 @@
         "show_rating": false,
         "enable_quick_add": true,
         "columns_mobile": "1",
+        "columns_desktop": "4",
         "swipe_on_mobile": false,
         "padding_top": 80,
         "padding_bottom": 80
