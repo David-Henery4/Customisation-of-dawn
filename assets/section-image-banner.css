@@ -424,6 +424,8 @@
   margin-top: 1rem;
 }
 
+/* IMAGE BEHIND BANNER */
+
 .banner__buttons {
   display: inline-flex;
   flex-wrap: wrap;
