@@ -38,7 +38,7 @@ slider-component.slider-component-full-width {
   padding-bottom: 0;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 750px) {
   .slider.slider--mobile {
     position: relative;
     flex-wrap: inherit;
@@ -332,13 +332,13 @@ slider-component.slider-component-full-width {
   justify-content: center;
 }
 
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 960px) {
   .slider:not(.slider--everywhere):not(.slider--desktop) + .slider-buttons {
     display: none;
   }
 }
 
-@media screen and (max-width: 989px) {
+@media screen and (max-width: 960px) {
   .slider--desktop:not(.slider--tablet) + .slider-buttons {
     display: none;
   }
