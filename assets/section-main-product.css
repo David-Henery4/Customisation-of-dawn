@@ -53,8 +53,11 @@
 }
 
 @media (min-width:960px) {
-  .product-image-padding-x{
+  .product-image-padding-left{
     padding: 0 4rem 0 0;
+  }
+  .product-image-padding-right{
+    padding: 0 0 0 4rem;
   }
   /* .product--right .product-image-padding-x{
     padding: 0 0 0 4rem;
