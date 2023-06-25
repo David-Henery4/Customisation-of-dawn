@@ -2687,6 +2687,15 @@
         "header_mobile": {
           "content": "Mobile Layout"
         },
+        "column_alignment_mobile": {
+          "label": "Column alignment on mobile",
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Center"
+          }
+        },
         "columns_mobile": {
           "label": "Number of columns on mobile",
           "options__1": {

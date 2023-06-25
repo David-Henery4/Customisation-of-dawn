@@ -466,8 +466,16 @@ table:not([class]) th {
   text-align: left;
 }
 
-.center {
-  text-align: center;
+@media (min-width:960px) {
+  .center {
+    text-align: center;
+  }
+}
+
+@media (max-width:960px) {
+  .center--mobile{
+    text-align: center;
+  }
 }
 
 .right {
