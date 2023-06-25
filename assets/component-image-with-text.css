@@ -167,7 +167,7 @@
   margin: -3rem auto 0;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 960px) {
   .image-with-text__grid--reverse .image-with-text__content {
     margin-left: auto;
   }
@@ -344,8 +344,10 @@
 }
 
 .image-with-text__text p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+  /* margin-top: 0;
+  margin-bottom: 1rem; */
+  max-width: 48rem;
+  margin: 0 auto 1rem;
 }
 
 @media screen and (max-width: 749px) {
