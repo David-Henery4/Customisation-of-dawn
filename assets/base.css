@@ -989,7 +989,10 @@ summary::-webkit-details-marker {
   }
 }
 
-@media screen and (max-width: 989px) {
+/* was 989px */
+/* MIGHT have to dulicate for "multicolumn" section */
+/* AND keep this for everywhere else */
+@media screen and (max-width: 960px) {
   .grid--1-col-tablet-down .grid__item {
     width: 100%;
     max-width: 100%;
