@@ -27,6 +27,11 @@
           "settings": {
           }
         },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -45,9 +50,19 @@
             "show_gift_card_recipient": false
           }
         },
-        "description": {
-          "type": "description",
+        "collapsible-description": {
+          "type": "collapsible_description",
           "settings": {
+            
+          }
+        },
+        "168559d1-b339-40c8-af4a-127c4e83ac12": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "icon": "silhouette",
+            "content": "",
+            "page": ""
           }
         },
         "collapsible-row-0": {
@@ -98,10 +113,11 @@
         "title",
         "caption",
         "price",
+        "description",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
+        "168559d1-b339-40c8-af4a-127c4e83ac12",
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
