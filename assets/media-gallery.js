@@ -50,7 +50,8 @@ if (!customElements.get('media-gallery')) {
             activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft });
           }
           if (!this.elements.thumbnails || this.dataset.desktopLayout === 'stacked') {
-            activeMedia.scrollIntoView({ behavior: 'smooth' });
+            // Removes scoll behaviour when selecting variant
+            // activeMedia.scrollIntoView({ behavior: 'smooth' });
           }
         });
         this.playActiveMedia(activeMedia);

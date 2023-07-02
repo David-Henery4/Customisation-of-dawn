@@ -20,8 +20,20 @@
   assign variants_option2_arr = product.variants | map: 'option2'
   assign variants_option3_arr = product.variants | map: 'option3'
 
-  assign product_form_id = 'product-form-' | append: section.id
+  assign product_form_id = 'product-form-' | append: section.id  
+
+  assign colorVariants = ''
+    for variant in product.variants
+      if variant.metafields.color.value
+        assign colorVariants = colorVariants | append: variant.metafields.color.value | append: ','
+      endif
+    endfor
+  assign colorVariants = colorVariants | split: ',' | uniq
 -%}
+
+<script>
+  console.log({{ option | json }})
+</script>
 
 {%- for value in option.values -%}
   {%- liquid
@@ -59,10 +71,17 @@
         class="disabled"
       {% endif %}
     >
+    {% if option.name == "Color" %}
+      <label class="color-swatch" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" style="background-color: {{ colorVariants[forloop.index0] }}">
+        
+      <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+    </label>
+    {% else %}
     <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
       {{ value -}}
       <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
     </label>
+    {% endif %}
   {%- elsif block.settings.picker_type == 'dropdown' -%}
     <option
       value="{{ value | escape }}"
