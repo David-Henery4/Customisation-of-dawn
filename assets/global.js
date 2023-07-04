@@ -351,6 +351,7 @@ class MenuDrawer extends HTMLElement {
     this.querySelectorAll('button:not(.localization-selector)').forEach((button) =>
       button.addEventListener('click', this.onCloseButtonClick.bind(this))
     );
+    this.querySelector('.close-sidebar').addEventListener("click", this.onCloseButtonClick.bind(this))
   }
 
   onKeyUp(event) {
@@ -402,6 +403,8 @@ class MenuDrawer extends HTMLElement {
     summaryElement.setAttribute('aria-expanded', true);
     trapFocus(this.mainDetailsToggle, summaryElement);
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
+    // console.log(document.querySelector('.announcement-bar-section').offsetHeight);
+    // console.log("hello")
   }
 
   closeMenuDrawer(event, elementToFocus = false) {
@@ -476,11 +479,17 @@ class HeaderDrawer extends MenuDrawer {
 
   openMenuDrawer(summaryElement) {
     this.header = this.header || document.querySelector('.section-header');
+    // Like the "navContent" variable in the header section
+    // might have to change "this.headerContent" back to "this.header" at some point
+    this.headerContent = this.headerContent || document.querySelector('.header-wrapper');
+    // Announcment Bar Element
+    this.announcmentBarEle = this.announcmentBarEle || document.querySelector('.announcement-bar-section');
+    //
     this.borderOffset =
       this.borderOffset || this.closest('.header-wrapper').classList.contains('header-wrapper--border-bottom') ? 1 : 0;
     document.documentElement.style.setProperty(
       '--header-bottom-position',
-      `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`
+      `${parseInt(this.headerContent.getBoundingClientRect().bottom - this.borderOffset)}px`
     );
     this.header.classList.add('menu-open');
 
@@ -492,6 +501,14 @@ class HeaderDrawer extends MenuDrawer {
     window.addEventListener('resize', this.onResize);
     trapFocus(this.mainDetailsToggle, summaryElement);
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
+
+    // Use this to take into account the annoucment bar (if there is one)
+    if (this.announcmentBarEle){
+      document.documentElement.style.setProperty('--announcment-bar-height', `${this.announcmentBarEle.offsetHeight}px`);
+    }
+    if (!this.announcmentBarEle){
+      document.documentElement.style.setProperty('--announcment-bar-height', `0px`);
+    }
   }
 
   closeMenuDrawer(event, elementToFocus) {
@@ -502,10 +519,10 @@ class HeaderDrawer extends MenuDrawer {
   }
 
   onResize = () => {
-    this.header &&
+    this.headerContent &&
       document.documentElement.style.setProperty(
         '--header-bottom-position',
-        `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`
+        `${parseInt(this.headerContent.getBoundingClientRect().bottom - this.borderOffset)}px`
       );
     document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`);
   };
