@@ -265,6 +265,8 @@ fieldset.product-form__input .form__label {
 
 .product-form__input input[type='radio'] + label:hover:not(.color-swatch) {
   border-color: rgb(var(--color-foreground));
+  background-color: rgba(var(--color-foreground), 0.1);
+  /* scale: 1.1; */
 }
 
 .color-swatch-container{
@@ -348,6 +350,7 @@ fieldset.product-form__input .form__label {
   border-color: rgba(var(--color-foreground), 0.1);
   color: rgba(var(--color-foreground), 0.6);
   text-decoration: line-through;
+  pointer-events: none;
 }
 
 .product-form__input input[type='radio'].disabled:checked + label,

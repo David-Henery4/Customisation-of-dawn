@@ -31,9 +31,6 @@
   assign colorVariants = colorVariants | split: ',' | uniq
 -%}
 
-<script>
-  console.log({{ option | json }})
-</script>
 
 {%- for value in option.values -%}
   {%- liquid
