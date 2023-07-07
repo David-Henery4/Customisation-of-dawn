@@ -338,6 +338,8 @@ class MenuDrawer extends HTMLElement {
     super();
 
     this.mainDetailsToggle = this.querySelector('details');
+    
+    this.observer = null;
 
     this.addEventListener('keyup', this.onKeyUp.bind(this));
     this.addEventListener('focusout', this.onFocusOut.bind(this));
@@ -351,7 +353,18 @@ class MenuDrawer extends HTMLElement {
     this.querySelectorAll('button:not(.localization-selector)').forEach((button) =>
       button.addEventListener('click', this.onCloseButtonClick.bind(this))
     );
-    this.querySelector('.close-sidebar').addEventListener("click", this.onCloseButtonClick.bind(this))
+    this.querySelector('.close-sidebar').addEventListener('click', this.closeOnSidebarClick.bind(this));
+  }
+
+  // Method used to close the sidebar
+  // when the close icon is clicked 
+  // inside the sidebar
+  closeOnSidebarClick(event) {
+    const openDetailsElement = event.target.closest('details[open]');
+    if (!openDetailsElement) return;
+
+    this.closeMenuDrawer(event, this.mainDetailsToggle.querySelector('summary'));
+    this.closeSubmenu(openDetailsElement);
   }
 
   onKeyUp(event) {
@@ -403,8 +416,6 @@ class MenuDrawer extends HTMLElement {
     summaryElement.setAttribute('aria-expanded', true);
     trapFocus(this.mainDetailsToggle, summaryElement);
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
-    // console.log(document.querySelector('.announcement-bar-section').offsetHeight);
-    // console.log("hello")
   }
 
   closeMenuDrawer(event, elementToFocus = false) {
@@ -421,6 +432,11 @@ class MenuDrawer extends HTMLElement {
     document.body.classList.remove(`overflow-hidden-${this.dataset.breakpoint}`);
     removeTrapFocus(elementToFocus);
     this.closeAnimation(this.mainDetailsToggle);
+
+    // Disconnects observer when sidebar is closed
+    // no longer checks for announcment banner height
+    this.observer.disconnect()
+    // ****** //
 
     if (event instanceof KeyboardEvent) elementToFocus?.setAttribute('aria-expanded', false);
   }
@@ -502,11 +518,22 @@ class HeaderDrawer extends MenuDrawer {
     trapFocus(this.mainDetailsToggle, summaryElement);
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
 
-    // Use this to take into account the annoucment bar (if there is one)
-    if (this.announcmentBarEle){
-      document.documentElement.style.setProperty('--announcment-bar-height', `${this.announcmentBarEle.offsetHeight}px`);
+    // checks to see if there is an announcment bar 
+    // and then checks the height of it in the viewport
+    // and uses this to dicate the size of the sidebar
+    if (this.announcmentBarEle) {
+        let options = {
+          root: null,
+        };
+        this.observer = new IntersectionObserver((ent, obs) => {
+          document.documentElement.style.setProperty(
+            '--announcment-bar-height',
+            `${Math.round(ent[0].intersectionRect.bottom)}px`
+          );
+        }, options);
+        this.observer.observe(this.announcmentBarEle);
     }
-    if (!this.announcmentBarEle){
+    if (!this.announcmentBarEle) {
       document.documentElement.style.setProperty('--announcment-bar-height', `0px`);
     }
   }
@@ -742,9 +769,13 @@ class SlideshowComponent extends SliderComponent {
       });
 
       [this.prevButton, this.nextButton].forEach((button) => {
-        button.addEventListener('click', () => {
-          this.announcementBarArrowButtonWasClicked = true;
-        }, {once: true});
+        button.addEventListener(
+          'click',
+          () => {
+            this.announcementBarArrowButtonWasClicked = true;
+          },
+          { once: true }
+        );
       });
     }
 
@@ -764,7 +795,9 @@ class SlideshowComponent extends SliderComponent {
       this.autoplayButtonIsSetToPlay = true;
       this.play();
     } else {
-      this.reducedMotion.matches || this.announcementBarArrowButtonWasClicked || !this.desktopLayout.matches ? this.pause() : this.play();
+      this.reducedMotion.matches || this.announcementBarArrowButtonWasClicked || !this.desktopLayout.matches
+        ? this.pause()
+        : this.play();
     }
   }
 
@@ -813,7 +846,11 @@ class SlideshowComponent extends SliderComponent {
         event.target === this.sliderAutoplayButton || this.sliderAutoplayButton.contains(event.target);
       if (!this.autoplayButtonIsSetToPlay || focusedOnAutoplayButton) return;
       this.play();
-    } else if (!this.reducedMotion.matches && !this.announcementBarArrowButtonWasClicked && this.desktopLayout.matches) {
+    } else if (
+      !this.reducedMotion.matches &&
+      !this.announcementBarArrowButtonWasClicked &&
+      this.desktopLayout.matches
+    ) {
       this.play();
     }
   }
