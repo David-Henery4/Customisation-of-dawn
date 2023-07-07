@@ -1928,9 +1928,6 @@
         "products_per_page": {
           "label": "Products per page"
         },
-        "columns_desktop": {
-          "label": "Number of columns on desktop"
-        },
         "enable_filtering": {
           "label": "Enable filtering",
           "info": "Customize filters with the Search & Discovery app. [Learn more](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
@@ -1988,7 +1985,7 @@
           "info": "Optimal with popup or drawer cart type."
         },
         "header_mobile": {
-          "content": "Mobile Layout"
+          "content": "Grid Column Layout"
         },
         "columns_mobile": {
           "label": "Number of columns on mobile",
@@ -1997,6 +1994,39 @@
           },
           "options__2": {
             "label": "2 columns"
+          }
+        },
+        "columns_tablet": {
+          "label": "Number of columns on tablet",
+          "options__1": {
+            "label": "2 columns"
+          },
+          "options__2": {
+            "label": "3 columns"
+          }
+        },
+        "columns_laptop": {
+          "label": "Number of columns on laptop",
+          "options__1": {
+            "label": "2 columns"
+          },
+          "options__2": {
+            "label": "3 columns"
+          },
+          "options__3": {
+            "label": "4 columns"
+          }
+        },
+        "columns_desktop": {
+          "label": "Number of columns on desktop",
+          "options__1": {
+            "label": "2 columns"
+          },
+          "options__2": {
+            "label": "3 columns"
+          },
+          "options__3": {
+            "label": "4 columns"
           }
         }
       }
