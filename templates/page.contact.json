@@ -9,6 +9,17 @@
     },
     "form": {
       "type": "contact-form",
+      "blocks": {
+        "contact-info": {
+          "type": "contact-info",
+          "settings": {
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "contact-info"
+      ],
       "settings": {
         "heading": "",
         "heading_size": "h1",
