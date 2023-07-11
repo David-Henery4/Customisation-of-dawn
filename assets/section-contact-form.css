@@ -37,3 +37,61 @@
     grid-column-gap: 2rem;
   }
 }
+
+
+/* TEXT CONTENT ALIGNMENT */
+
+.contact-info{
+  margin-bottom: 7rem;
+}
+
+@media (max-width: 1075px) {
+  .contact-info-center-mob{
+    text-align: center;
+  }
+  
+  .contact-info-left-mob{
+    text-align: left;
+  }
+}
+
+@media (min-width: 1075px) {
+  .contact-info-center-desk{
+    text-align: center;
+  }
+  
+  .contact-info-left-desk{
+    text-align: left;
+  }
+}
+
+/* Contact form section layout */
+
+@media (min-width: 1075px) {
+  .contact-form-horizontal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 13rem;
+  }
+  
+  .contact-form-horizontal__form{
+    flex: 1;
+  }
+  .contact-form-horizontal__info{
+    flex: 1;
+  }
+}
+
+@media (min-width: 680px) and (max-width: 990px) {
+  .page-width-contact-mobile--narrow {
+    padding: 0 9rem;
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1075px) {
+  .page-width-contact-mobile--narrow {
+    max-width: 72.6rem;
+    padding: 0;
+  }
+}
