@@ -13,6 +13,8 @@
 {% endcomment %}
 
 {{ 'component-show-more.css' | asset_url | stylesheet_tag }}
+{{ 'component-sort-dropdown.css' | asset_url | stylesheet_tag }}
+
 
 {%- liquid
   assign sort_by = results.sort_by | default: results.default_sort_by
@@ -178,6 +180,11 @@
                                     disabled
                                   {% endif %}
                                 >
+
+                                {% if value.param_name == "filter.v.option.color" %}
+                                hellodeodjewojdoew
+                                  
+                                {% endif %}
 
                                 <svg
                                   width="1.6rem"
@@ -464,32 +471,46 @@
           {% comment %} Sorting and product count are the last elements when filter type is horizontal {% endcomment %}
           {%- if enable_sorting -%}
             <div class="facet-filters sorting caption">
-              <div class="facet-filters__field">
-                <h2 class="facet-filters__label caption-large text-body">
-                  <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-                </h2>
-                <div class="select">
-                  {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
-                  <select
-                    name="sort_by"
-                    class="facet-filters__sort select__select caption-large"
-                    id="SortBy"
-                    aria-describedby="a11y-refresh-page-message"
-                  >
-                    {%- for option in results.sort_options -%}
-                      <option
-                        value="{{ option.value | escape }}"
-                        {% if option.value == sort_by %}
-                          selected="selected"
-                        {% endif %}
-                      >
-                        {{ option.name | escape }}
-                      </option>
-                    {%- endfor -%}
-                  </select>
+              <div class="sort-container">
+                <div class="sort-container-labels">
+                  <h2 class="facet-filters__label caption-large text-body sort-container-labels__label">
+                    {{ 'products.facets.sort_by_label' | t }}
+                  </h2>
                   {% render 'icon-caret' %}
                 </div>
+                <div class="sort-option-container">
+                  {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+
+                  <ul
+                    class="facet-filters__sort select__select caption-large sort-option-list"
+                    aria-describedby="a11y-refresh-page-message"
+                    role="list"
+                  >
+                    {%- for option in results.sort_options -%}
+                      <li class="sort-option">
+                        <label class="sort-option__label" for="{{ option.value | escape }}">
+                          <input
+                          class="sort-option__input"
+                          value="{{ option.value | escape }}"
+                          type="radio"
+                          name="sort_by"
+                          {% if option.value == sort_by %}
+                          selected = "selected"
+                          checked
+                        {% endif %}
+                        >
+                        <span class="sort-option__label--name">
+                          {{ option.name | escape }}
+                        </span>
+                        </label>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                  
+                </div>
               </div>
+
+            
 
               <noscript>
                 <button type="submit" class="facets__button-no-js button button--secondary">

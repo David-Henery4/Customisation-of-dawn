@@ -353,7 +353,7 @@ class MenuDrawer extends HTMLElement {
     this.querySelectorAll('button:not(.localization-selector)').forEach((button) =>
       button.addEventListener('click', this.onCloseButtonClick.bind(this))
     );
-    this.querySelector('.close-sidebar').addEventListener('click', this.closeOnSidebarClick.bind(this));
+    this.querySelector('.close-sidebar')?.addEventListener('click', this.closeOnSidebarClick.bind(this));
   }
 
   // Method used to close the sidebar
@@ -435,7 +435,7 @@ class MenuDrawer extends HTMLElement {
 
     // Disconnects observer when sidebar is closed
     // no longer checks for announcment banner height
-    this.observer.disconnect()
+    this.observer?.disconnect()
     // ****** //
 
     if (event instanceof KeyboardEvent) elementToFocus?.setAttribute('aria-expanded', false);

@@ -12,6 +12,13 @@ class FacetFiltersForm extends HTMLElement {
 
     const facetWrapper = this.querySelector('#FacetsWrapperDesktop');
     if (facetWrapper) facetWrapper.addEventListener('keyup', onKeyUpEscape);
+
+    const sortContainer = document.querySelector('.facet-filters');
+    sortContainer.addEventListener("click", this.handleSortToggle)
+  }
+
+  handleSortToggle (e) {
+    document.querySelector('.sort-option-container').classList.toggle('sort-option-container--active');
   }
 
   static setListeners() {

@@ -29,6 +29,15 @@
   }
 {%- endstyle -%}
 
+<script>
+  console.log({{collection.filters | json}})
+  {% liquid
+    {% for filt in collection.filters %}
+      console.log({{filt | json}})
+    {% endfor %}
+  %}
+</script>
+
 <div class="section-{{ section.id }}-padding">
   {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
@@ -55,7 +64,7 @@
                         selected="selected"
                       {% endif %}
                     >
-                      {{ option.name | escape }}
+                      {{ option.name | escape }}Helllo
                     </option>
                   {%- endfor -%}
                 </select>
@@ -113,6 +122,7 @@
           id="main-collection-filters"
           data-id="{{ section.id }}"
         >
+
           {% render 'facets',
             results: collection,
             enable_filtering: section.settings.enable_filtering,
