@@ -27,6 +27,12 @@
   endif
 -%}
 
+<script>
+  {% comment %}
+  console.log({{shop.metaobjects.variant_colors.variant-colors-dexhuunv | json }})
+  {% endcomment %}
+</script>
+
 <div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
     <facet-filters-form class="facets small-hide">
@@ -180,12 +186,7 @@
                                     disabled
                                   {% endif %}
                                 >
-
-                                {% if value.param_name == "filter.v.option.color" %}
-                                hellodeodjewojdoew
-                                  
-                                {% endif %}
-
+                                
                                 <svg
                                   width="1.6rem"
                                   height="1.6rem"
@@ -211,6 +212,9 @@
                                     stroke-linecap="round"
                                     stroke-linejoin="round" />
                                 </svg>
+
+                                {% comment %} Desktop {% endcomment %}
+                                {% render 'filter-color-swatches', value: value %}
 
                                 <span aria-hidden="true">{{ value.label | escape }} ({{ value.count }})</span>
                                 <span class="visually-hidden">
@@ -471,6 +475,9 @@
           {% comment %} Sorting and product count are the last elements when filter type is horizontal {% endcomment %}
           {%- if enable_sorting -%}
             <div class="facet-filters sorting caption">
+              {% comment %}
+                Sort dropdown as radio & new styles
+              {% endcomment %}
               <div class="sort-container">
                 <div class="sort-container-labels">
                   <h2 class="facet-filters__label caption-large text-body sort-container-labels__label">
@@ -732,6 +739,9 @@
                                   >
                                     <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
                                   </svg>
+
+                                  {% comment %} Mobile {% endcomment %}
+                                {% render 'filter-color-swatches', value: value %}
 
                                   <span aria-hidden="true">{{ value.label | escape }} ({{ value.count }})</span>
                                   <span class="visually-hidden">
