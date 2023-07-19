@@ -27,10 +27,15 @@
   endif
 -%}
 
+{% liquid
+  assign sortMobileLabel = ""
+%}
+
 <script>
   {% comment %}
   console.log({{shop.metaobjects.variant_colors.variant-colors-dexhuunv | json }})
-  {% endcomment %}
+  console.log({{products | json }})
+{% endcomment %}
 </script>
 
 <div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
@@ -495,20 +500,21 @@
                   >
                     {%- for option in results.sort_options -%}
                       <li class="sort-option">
+                        <input
+                        id="{{ option.value | escape }}"
+                        class="sort-option__input"
+                        data-label="{{ option.name | escape }}"
+                        value="{{ option.value | escape }}"
+                        type="radio"
+                        name="sort_by"
+                        {% if option.value == sort_by %}
+                        selected = "selected"
+                        checked
+                        {% endif %}>
                         <label class="sort-option__label" for="{{ option.value | escape }}">
-                          <input
-                          class="sort-option__input"
-                          value="{{ option.value | escape }}"
-                          type="radio"
-                          name="sort_by"
-                          {% if option.value == sort_by %}
-                          selected = "selected"
-                          checked
-                        {% endif %}
-                        >
-                        <span class="sort-option__label--name">
-                          {{ option.name | escape }}
-                        </span>
+                          <span class="sort-option__label--name">
+                            {{ option.name | escape }}
+                          </span>
                         </label>
                       </li>
                     {%- endfor -%}
@@ -613,7 +619,7 @@
     data-breakpoint="mobile"
   >
     <details class="mobile-facets__disclosure disclosure-has-popup">
-      <summary class="mobile-facets__open-wrapper focus-offset">
+      <summary class="mobile-facets__open-wrapper focus-offset mobile-facets-btn">
         <span class="mobile-facets__open{% if filter_type == 'drawer' and enable_filtering == false %} medium-hide large-up-hide{% endif %}">
           {% render 'icon-filter' %}
           <span class="mobile-facets__open-label button-label medium-hide large-up-hide">
@@ -894,36 +900,54 @@
               {%- endif -%}
 
               {%- if enable_sorting -%}
+
+
                 <div
-                  class="mobile-facets__details js-filter{% if filter_type == 'drawer' %} medium-hide large-up-hide{% endif %}"
+                  class="mobile-facets__details mobile-facets__details--sort js-filter{% if filter_type == 'drawer' %} medium-hide large-up-hide{% endif %}"
                   data-index="mobile-{{ forloop.index }}"
                 >
-                  <div class="mobile-facets__summary">
-                    <div class="mobile-facets__sort">
+                  <div class="mobile-facets__summary mobile-facets__summary--sort">
+                    <div class="mobile-facets__sort mobile-facets-sort-container">
                       <label for="SortBy-mobile">{{ 'products.facets.sort_by_label' | t }}</label>
-                      <div class="select">
-                        <select
+                      <div class="select mobile-sort-select">
+                        <div class="mobile-sort-labels-container">
+                            <p class="sort-label-mobile">{{sortMobileLabel}} LABEL</p>
+                            {% render 'icon-caret' %}
+                          </div>
+                        <div class="mobile-sort-list-container">
+                          <ul
                           name="sort_by"
-                          class="select__select"
+                          class="sort-option-list sort-option-list-mobile"
                           id="SortBy-mobile"
                           aria-describedby="a11y-refresh-page-message"
-                        >
+                          >
                           {%- for option in results.sort_options -%}
-                            <option
-                              value="{{ option.value | escape }}"
-                              {% if option.value == sort_by %}
+                            <li class="sort-option-item-mobile">
+                              <label>
+                                <input
+                                data-label="{{ option.name | escape }}"
+                                class="sort-option-input-mobile"
+                                type="radio"
+                                name="sort_by"
+                                value="{{ option.value | escape }}"
+                                {% if option.value == sort_by %}
                                 selected="selected"
-                              {% endif %}
-                            >
-                              {{ option.name | escape }}
-                            </option>
+                                checked
+                                {% endif %}>
+                                <span>
+                                  {{ option.name | escape }}
+                                </span>
+                              </label>
+                            </li>
                           {%- endfor -%}
-                        </select>
-                        {% render 'icon-caret' %}
+                        </ul>
+                        </div>
                       </div>
-                    </div>
+                      </div>
                   </div>
                 </div>
+
+
               {%- endif -%}
 
               <div class="mobile-facets__footer">
@@ -1008,32 +1032,44 @@
     <facet-filters-form class="facets small-hide">
       <form id="FacetSortDrawerForm" class="facets__form">
         <div class="facet-filters sorting caption small-hide">
-          <div class="facet-filters__field">
-            <h2 class="facet-filters__label caption-large text-body">
-              <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-            </h2>
-            <div class="select">
-              {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
-              <select
-                name="sort_by"
-                class="facet-filters__sort select__select caption-large"
-                id="SortBy"
-                aria-describedby="a11y-refresh-page-message"
-              >
-                {%- for option in results.sort_options -%}
-                  <option
-                    value="{{ option.value | escape }}"
-                    {% if option.value == sort_by %}
-                      selected="selected"
-                    {% endif %}
-                  >
-                    {{ option.name | escape }}
-                  </option>
-                {%- endfor -%}
-              </select>
-              {% render 'icon-caret' %}
+          
+          <div class="sort-container">
+              <div class="sort-container-labels">
+                <h2 class="facet-filters__label caption-large text-body">
+                  <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+                </h2>
+                {% render 'icon-caret' %}
+              </div>
+              <div class="sort-option-container">
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <ul
+                  name="sort_by"
+                  class="facet-filters__sort select__select caption-large sort-option-list"
+                  id="SortBy"
+                  aria-describedby="a11y-refresh-page-message">
+                    {%- for option in collection.sort_options -%}
+                      <li class="sort-option">
+                        <input
+                        id="{{ option.value | escape }}"
+                        class="sort-option__input"
+                        data-label="{{ option.name | escape }}"
+                        value="{{ option.value | escape }}"
+                        type="radio"
+                        name="sort_by"
+                        {% if option.value == sort_by %}
+                        selected = "selected"
+                        checked
+                        {% endif %}>
+                        <label class="sort-option__label" for="{{ option.value | escape }}">
+                          <span class="sort-option__label--name">
+                            {{ option.name | escape }}
+                          </span>
+                        </label>
+                      </li>
+                    {%- endfor -%}
+                </ul>
+              </div>
             </div>
-          </div>
 
           <noscript>
             <button type="submit" class="facets__button-no-js button button--secondary">

@@ -14,11 +14,37 @@ class FacetFiltersForm extends HTMLElement {
     if (facetWrapper) facetWrapper.addEventListener('keyup', onKeyUpEscape);
 
     const sortContainer = document.querySelector('.facet-filters');
-    sortContainer.addEventListener("click", this.handleSortToggle)
+    sortContainer.addEventListener('click', this.handleSortToggle);
+
+    // Updates mobile sort label on initial load
+    this.setInitalSortMobileLabel();
+
+    // Updates mobile sort label on button click to keep it up to date,
+    // with the sort on desktop
+    const mobileFacetsBtn = document.querySelector('.mobile-facets-btn');
+    mobileFacetsBtn.addEventListener('click', this.setInitalSortMobileLabel);
+
+    // Sort Mobile Accrodion
+    const mobileSort = document.querySelector('.mobile-facets__details--sort');
+    mobileSort.addEventListener("click", this.mobileSortAccordionToggle)
+  }
+
+  mobileSortAccordionToggle () {
+    const sortContainerListMobile = document.querySelector('.mobile-sort-list-container');
+    sortContainerListMobile.classList.toggle('mobile-sort-list-container--active');
+  }
+
+  setInitalSortMobileLabel (){
+    const inputsMobileSort = document.querySelectorAll('.sort-option-input-mobile');
+    inputsMobileSort.forEach((inpu) => {
+      if (inpu.checked) {
+        document.querySelector('.sort-label-mobile').innerHTML = inpu.dataset.label;
+      }
+    });
   }
 
   handleSortToggle (e) {
-    document.querySelector('.sort-option-container').classList.toggle('sort-option-container--active');
+    document.querySelector('.sort-option-container')?.classList.toggle('sort-option-container--active');
   }
 
   static setListeners() {
@@ -109,7 +135,6 @@ class FacetFiltersForm extends HTMLElement {
 
   static renderFilters(html, event) {
     const parsedHTML = new DOMParser().parseFromString(html, 'text/html');
-
     const facetDetailsElements = parsedHTML.querySelectorAll(
       '#FacetFiltersForm .js-filter, #FacetFiltersFormMobile .js-filter, #FacetFiltersPillsForm .js-filter'
     );
@@ -192,6 +217,9 @@ class FacetFiltersForm extends HTMLElement {
 
   onSubmitHandler(event) {
     event.preventDefault();
+    // Updates sort label on mobile when changing sorts
+    document.querySelector('.sort-label-mobile').innerHTML = event.target.dataset.label;
+    // **********************
     const sortFilterForms = document.querySelectorAll('facet-filters-form form');
     if (event.srcElement.className == 'mobile-facets__checkbox') {
       const searchParams = this.createSearchParams(event.target.closest('form'));

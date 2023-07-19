@@ -42,17 +42,23 @@
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 1.2rem;
 }
 
 .sort-option:hover {
-  background-color: red;
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.sort-option__input:checked ~ .sort-option__label {
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
 }
 
 .sort-option__label{
   display: inline-block;
   width:100%;
   height:100%;
+  padding: 1.2rem;
 }
 
 .sort-option__label--name{
@@ -88,3 +94,88 @@
 
 /* MOBILE SLIDE IN STYLES */
 
+.mobile-facets__details--sort:hover{
+  cursor: pointer;
+}
+
+.mobile-facets-sort-container{
+  align-items: flex-start;
+}
+
+.mobile-facets-sort-container > label{
+  padding-top: .5rem;
+}
+
+.mobile-sort-labels-container{
+  padding: .5rem 2.6rem .5rem .8rem;
+  position: relative;
+  border: 1px solid #000 ;
+}
+
+.mobile-sort-labels-container .icon-caret {
+  right: .8rem !important;
+}
+
+.sort-label-mobile{
+  margin: 0;
+}
+
+.mobile-sort-select{
+  flex-direction: column;
+  position: relative;
+}
+
+.mobile-sort-list-container{
+  max-height: 0px;
+  overflow: hidden;
+  transition: .4s ease-in-out ;
+  border: 1px solid #000;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.sort-option-list-mobile{
+  margin: 0;
+  height: 100%;
+}
+
+.sort-option-item-mobile{
+  width: 100%;
+  position: relative;
+  padding: .5rem .8rem;
+}
+
+.sort-option-item-mobile:hover,
+.sort-option-item-mobile:hover input{
+  cursor: pointer;
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.sort-option-item-mobile > span {
+  display: inline-block;
+  width: 100%;
+}
+
+.sort-option-input-mobile{
+  position: absolute; 
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+/* Classes for functionality Mobile */
+.mobile-sort-list-container--active{
+  max-height: 500px;
+  border-bottom: 1px solid #000;
+}
+
+
+/* 
+  Also hover styles on mobile "sort"
+  TOMORROW HAVE TO STYLE THE "SORT BY" DROPDOWN, (AGAIN!!!!!!!!!!)
+  ON THE FILTER DRAW STYLE ON DESKTOP SIZES!!!1
+*/
